@@ -1,19 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# List to hold the tasks
-tasks = []
-
 @app.route('/')
 def index():
-    return render_template('index.html', tasks=tasks)
-
-@app.route('/add', methods=['POST'])
-def add():
-    task = request.form['task']
-    tasks.append(task)
-    return redirect(url_for('index'))
+    return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True)
